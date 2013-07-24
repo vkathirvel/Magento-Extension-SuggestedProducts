@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* @package    Optimiseweb_SuggestedProducts
+* @author     Kathir Vel (sid@optimiseweb.co.uk)
+* @copyright  Copyright (c) 2013 Optimise Web Ltd
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+
+    <modules>
+        <Optimiseweb_SuggestedProducts>
+            <version>0.1.7</version>
+        </Optimiseweb_SuggestedProducts>
+    </modules>
+
+    <frontend>
+
+        <translate>
+            <modules>
+                <Optimiseweb_SuggestedProducts>
+                    <files>
+                        <default>Optimiseweb_SuggestedProducts.csv</default>
+                    </files>
+                </Optimiseweb_SuggestedProducts>
+            </modules>
+        </translate>
+
+    </frontend>
+
+    <global>
+
+        <blocks>
+            <optimiseweb_suggestedproducts>
+                <class>Optimiseweb_SuggestedProducts_Block</class>
+            </optimiseweb_suggestedproducts>
+        </blocks>
+
+        <helpers>
+            <optimiseweb_suggestedproducts>
+                <class>Optimiseweb_SuggestedProducts_Helper</class>
+            </optimiseweb_suggestedproducts>
+        </helpers>
+
+        <models>
+            <optimiseweb_suggestedproducts>
+                <class>Optimiseweb_SuggestedProducts_Model</class>
+            </optimiseweb_suggestedproducts>
+        </models>
+
+    </global>
+
+</config>

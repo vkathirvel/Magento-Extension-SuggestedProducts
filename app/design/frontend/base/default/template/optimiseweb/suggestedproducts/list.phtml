@@ -1,0 +1,132 @@
+<?php
+/**
+ * Optimiseweb SuggestedProducts
+ *
+ * app/design/frontend/base/default/template/optimiseweb/suggestedproducts/list.phtml
+ *
+ * @package     Optimiseweb_SuggestedProducts
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
+ * @copyright   Copyright (c) 2013 Optimise Web Ltd
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php if ($this->getItems()->getSize()): ?>
+    <?php
+    /* Div Class */
+    $divClass = $this->getDivClass() ? $this->getDivClass() : 'suggested-products-block';
+    /* UL ID */
+    $ulId = $this->getUlId() ? $this->getUlId() : 'suggested-products-list';
+    /* Ul Class */
+    $ulClass = $this->getUlClass() ? $this->getUlClass() : 'columns';
+    /* Li Class */
+    $liClass = $this->getLiClass() ? $this->getLiClass() : 'item columns';
+    /* Heading TAG */
+    $headingTag = $this->getHeadingTag() ? $this->getHeadingTag() : 'div';
+    /* Product Name TAG */
+    $productNameTag = $this->getProductNameTag() ? $this->getProductNameTag() : 'div';
+    /* Image Width */
+    $imageWidth = $this->getImageWidth() ? $this->getImageWidth() : '75';
+    /* Image Height */
+    $imageHeight = $this->getImageHeight() ? $this->getImageHeight() : '75';
+    ?>
+    <?php /* Suggested Products Box */ ?>
+    <div class="<?php echo $divClass; ?>">
+        <?php /* Heading */ ?>
+        <?php if ($this->getHeading()): ?>
+            <<?php echo $headingTag; ?>><?php echo $this->__($this->getHeading()); ?></<?php echo $headingTag; ?>>
+        <?php endif; ?>
+        <?php /* List Start */ ?>
+        <ul id="<?php echo $ulId; ?>" class="<?php echo $ulClass; ?>">
+            <?php $i = 1; ?>
+            <?php foreach ($this->getItems() as $_item): ?>
+                <?php
+                if ($i == 1) {
+                    if ($this->getLiClassFirst()) {
+                        $customLiClass = ' ' . $this->getLiClassFirst();
+                    }
+                } elseif ($i == count($this->getItems())) {
+                    if ($this->getLiClassLast())
+                        $customLiClass = ' ' . $this->getLiClassLast();
+                }
+                else {
+                    $customLiClass = '';
+                }
+                ?>
+                <li class="<?php echo $liClass; ?><?php echo $customLiClass; ?>">
+                    <?php /* Product Image */ ?>
+                    <?php if ($this->getCanShowImage()): ?>
+                        <a class="product-image" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize($imageWidth, $imageHeight); ?>" width="<?php echo $imageWidth; ?>" height="<?php echo $imageHeight; ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" />
+                        </a>
+                    <?php endif; ?>
+                    <?php /* Product details */ ?>
+                    <div class="product-details">
+                        <?php /* Product Name */ ?>
+                        <<?php echo $productNameTag; ?> class="product-name">
+                        <a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
+                        </<?php echo $productNameTag; ?>>
+                        <?php /* Product Price */ ?>
+                        <?php if ($this->getCanShowPrice()): ?>
+                            <?php echo $this->getPriceHtml($_item, true) ?>
+                        <?php endif; ?>
+                        <?php /* Product Add to Cart */ ?>
+                        <?php if ($this->getCanShowAddButton()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart btn" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><?php echo $this->__('Add to Cart') ?></button>
+                        <?php endif; ?>
+                    </div>
+                </li>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </ul>
+        <script type="text/javascript">decorateList('<?php echo $ulId; ?>', 'none-recursive')</script>
+    </div>
+<?php endif; ?>
+
+<?php
+/*
+  $this->getLayout()->createBlock('optimiseweb_suggestedproducts/list')
+  ->setName('similiarCategoryProducts')
+  ->setTemplate('optimiseweb/suggestedproducts/list.phtml')
+  ->setSuggestion('attribute')
+  ->setAttributeCode('ow_multiselect')
+  ->setNumProducts(5)
+  ->setRandomize(TRUE)
+  ->setDivClass('similar-category-products-box')
+  ->setUlId('similar-category-products-list')
+  ->setUlClass('row')
+  ->setLiClass('four columns')
+  ->setLiClassFirst('alpha')
+  ->setLiClassLast('omega')
+  ->setHeading('Products from the Category')
+  ->setHeadingTag('h3')
+  ->setProductNameTag('h5')
+  ->setCanShowImage(TRUE)
+  ->setImageWidth('100')
+  ->setImageHeight('100')
+  ->setCanShowPrice(TRUE)
+  ->setCanShowAddButton(TRUE)
+  ->toHtml();
+ */
+/*
+  $this->getLayout()->createBlock('optimiseweb_suggestedproducts/list_related')
+  ->setName('relatedProducts')
+  ->setTemplate('optimiseweb/suggestedproducts/list.phtml')
+  ->setNumProducts(5)
+  ->setRandomize(TRUE)
+  ->setDivClass('related-products-box')
+  ->setUlId('related-products-list')
+  ->setUlClass('row')
+  ->setLiClass('four columns')
+  ->setLiClassFirst('alpha')
+  ->setLiClassLast('omega')
+  ->setHeading('Related Products')
+  ->setHeadingTag('h3')
+  ->setProductNameTag('h5')
+  ->setCanShowImage(TRUE)
+  ->setImageWidth('100')
+  ->setImageHeight('100')
+  ->setCanShowPrice(TRUE)
+  ->setCanShowAddButton(TRUE)
+  ->toHtml();
+ */
+?>
