@@ -8,8 +8,7 @@
  * @copyright   Copyright (c) 2013 Optimise Web Limited
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Optimiseweb_SuggestedProducts_Block_List_Related extends Mage_Catalog_Block_Product_Abstract
-{
+class Optimiseweb_SuggestedProducts_Block_List_Related extends Mage_Catalog_Block_Product_Abstract {
 
     /**
      * Default MAP renderer type
@@ -24,8 +23,7 @@ class Optimiseweb_SuggestedProducts_Block_List_Related extends Mage_Catalog_Bloc
      *
      * @return \Optimiseweb_SuggestedProducts_Block_List_Related
      */
-    protected function _prepareData()
-    {
+    protected function _prepareData() {
         $product = Mage::registry('product');
 
         /* @var $product Mage_Catalog_Model_Product */
@@ -64,19 +62,16 @@ class Optimiseweb_SuggestedProducts_Block_List_Related extends Mage_Catalog_Bloc
         return $this;
     }
 
-    protected function _beforeToHtml()
-    {
+    protected function _beforeToHtml() {
         $this->_prepareData();
         return parent::_beforeToHtml();
     }
 
-    public function getItemCollection()
-    {
+    public function getItemCollection() {
         return $this->_itemCollection;
     }
 
-    public function getItems()
-    {
+    public function getItems() {
         if (is_null($this->_items)) {
             $this->_items = $this->getItemCollection()->getItems();
         }

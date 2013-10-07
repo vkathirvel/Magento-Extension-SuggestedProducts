@@ -8,11 +8,9 @@
  * @copyright   Copyright (c) 2013 Optimise Web Limited
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Optimiseweb_SuggestedProducts_Block_List_Promotion extends Mage_Catalog_Block_Product_List
-{
+class Optimiseweb_SuggestedProducts_Block_List_Promotion extends Mage_Catalog_Block_Product_List {
 
-    protected function _getProductCollection()
-    {
+    protected function _getProductCollection() {
         if (is_null($this->_productCollection)) {
             $collection = Mage::getResourceModel('catalog/product_collection');
             Mage::getModel('catalog/layer')->prepareProductCollection($collection);
