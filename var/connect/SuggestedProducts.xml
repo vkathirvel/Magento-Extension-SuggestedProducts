@@ -1,5 +1,5 @@
 <_>
-   <form_key>Y3Lze3Tox5Gs14p8</form_key>
+   <form_key>Qbd6HnXHLx3ggdCt</form_key>
    <name>Optimiseweb_SuggestedProducts</name>
    <channel>community</channel>
    <version_ids>
@@ -9,7 +9,7 @@
    <description>SuggestedProducts</description>
    <license>Open Software License (OSL)</license>
    <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
-   <version>0.1.8</version>
+   <version>0.1.9</version>
    <stability>stable</stability>
    <notes>Stable</notes>
    <authors>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                     </files>
+            <files>                       </files>
          </files>
       </package>
       <extension>
@@ -61,20 +61,24 @@
          <target>magecommunity</target>
          <target>mageetc</target>
          <target>magedesign</target>
+         <target>magelocale</target>
       </target>
       <path>
          <path/>
          <path>Optimiseweb/SuggestedProducts</path>
          <path>modules/Optimiseweb_SuggestedProducts.xml</path>
          <path>frontend/base/default/template/optimiseweb/suggestedproducts</path>
+         <path>en_US/Optimiseweb_SuggestedProducts.csv</path>
       </path>
       <type>
          <type>file</type>
          <type>dir</type>
          <type>file</type>
          <type>dir</type>
+         <type>file</type>
       </type>
       <include>
+         <include/>
          <include/>
          <include/>
          <include/>
@@ -85,6 +89,11 @@
          <ignore/>
          <ignore/>
          <ignore/>
+         <ignore/>
       </ignore>
    </contents>
+   <page>1</page>
+   <limit>200</limit>
+   <folder/>
+   <package/>
 </_>

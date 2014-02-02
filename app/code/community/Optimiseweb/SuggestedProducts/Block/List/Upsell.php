@@ -5,10 +5,11 @@
  *
  * @package     Optimiseweb_SuggestedProducts
  * @author      Kathir Vel (sid@optimiseweb.co.uk)
- * @copyright   Copyright (c) 2013 Optimise Web Limited
+ * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Optimiseweb_SuggestedProducts_Block_List_Upsell extends Mage_Catalog_Block_Product_Abstract {
+class Optimiseweb_SuggestedProducts_Block_List_Upsell extends Mage_Catalog_Block_Product_Abstract
+{
 
     /**
      * Default MAP renderer type
@@ -19,7 +20,8 @@ class Optimiseweb_SuggestedProducts_Block_List_Upsell extends Mage_Catalog_Block
     protected $_items;
     protected $_itemCollection;
 
-    protected function _prepareData() {
+    protected function _prepareData()
+    {
         $product = Mage::registry('product');
 
         /* @var $product Mage_Catalog_Model_Product */
@@ -54,9 +56,9 @@ class Optimiseweb_SuggestedProducts_Block_List_Upsell extends Mage_Catalog_Block
          * Updating collection with desired items
          */
         Mage::dispatchEvent('optimiseweb_suggestedproducts_list_upsell', array(
-            'product' => $product,
-            'collection' => $this->_itemCollection,
-            'limit' => $numProducts
+                'product' => $product,
+                'collection' => $this->_itemCollection,
+                'limit' => $numProducts
         ));
 
         foreach ($this->_itemCollection as $product) {
@@ -66,16 +68,19 @@ class Optimiseweb_SuggestedProducts_Block_List_Upsell extends Mage_Catalog_Block
         return $this;
     }
 
-    protected function _beforeToHtml() {
+    protected function _beforeToHtml()
+    {
         $this->_prepareData();
         return parent::_beforeToHtml();
     }
 
-    public function getItemCollection() {
+    public function getItemCollection()
+    {
         return $this->_itemCollection;
     }
 
-    public function getItems() {
+    public function getItems()
+    {
         if (is_null($this->_items)) {
             $this->_items = $this->getItemCollection()->getItems();
         }
